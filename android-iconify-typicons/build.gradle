@@ -1,10 +1,7 @@
-buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
 }
-
-apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -12,16 +9,29 @@ android {
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_6
-        targetCompatibility JavaVersion.VERSION_1_6
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 dependencies {
-    compile project(':android-iconify')
+    implementation project(path: ':android-iconify')
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = GROUP
+                artifactId = 'android-iconify-typicons'
+                version = VERSION_NAME
+            }
+        }
+    }
+}
