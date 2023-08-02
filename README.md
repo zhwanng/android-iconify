@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/zhwanng/android-iconify.svg)](https://jitpack.io/#zhwanng/android-iconify)
+
 # Note: Due to lack of time, Iconify is no longer maintained and icon packs are outdated. I'd be very happy to welcome a new contributor, please reach me on twitter [@JoanZap](https://twitter.com/joanzap) if by any chance you're interested. 🙂
 
 <img src="graphics/logo.jpg" height="154" align="center">
